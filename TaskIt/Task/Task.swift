@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task{
+struct Task: Encodable, Decodable{
     var taskLabel: String = ""
     var taskDetail: String = ""
 }

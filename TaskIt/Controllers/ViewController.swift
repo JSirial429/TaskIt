@@ -21,8 +21,15 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("view will appear")
+        //Call function here to retrieve task list on disk
+        RetrieveArchivedTaskList()
         taskListTable.reloadData()
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        print("View is appearing")
     }
     
     @IBSegueAction func AddTasks(_ coder: NSCoder) -> AddTaskController? {
@@ -53,12 +60,40 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
             taskList[selectedIndexPath.row] = task
         } else {
             taskList.append(task)
+            //TODO Call Function here to save to local iPhone Storage
+            ArchiveTaskList(taskList)
+            
         }
     }
     
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         <#code#>
     }*/
+    
+    func ArchiveTaskList(_ taskList: [Task]){
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let archiveURL = documentsDirectory.appendingPathComponent("TaskIt").appendingPathExtension("plist")
+        
+        let propertyListEncoder = PropertyListEncoder()
+        let encodedTaskItList = try? propertyListEncoder.encode(taskList)
+        
+        try?  encodedTaskItList?.write(to: archiveURL, options: .noFileProtection)
+    }
+    
+    func RetrieveArchivedTaskList(){
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let archiveURL = documentsDirectory.appendingPathComponent("TaskIt").appendingPathExtension("plist")
+        
+        let propertyListDecoder = PropertyListDecoder()
+        
+        if let retrievedArchivedTaskList = try? Data(contentsOf: archiveURL),
+           let decodedArchivedTaskList = try? propertyListDecoder.decode(Array<Task>.self, from: retrievedArchivedTaskList){
+            taskList = decodedArchivedTaskList
+            print(retrievedArchivedTaskList)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskList.count

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddTaskController: UIViewController {
+class AddTaskController: UIViewController, UITextViewDelegate {
 
     var task: Task?
     
@@ -17,7 +17,6 @@ class AddTaskController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UpdateView()
-        // Do any additional setup after loading the view.
     }
     
     init?(coder: NSCoder, task: Task?) {
@@ -56,7 +55,7 @@ class AddTaskController: UIViewController {
         LabelTaskDetail.text = task.taskLabel
         TextViewTaskDetail.text = task.taskDetail
     }
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
