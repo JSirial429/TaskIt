@@ -9,8 +9,10 @@ import UIKit
 
 class ViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var taskListEditButton: UIButton!
     @IBOutlet weak var taskListTable: UITableView!
     var taskList: [Task] = []
+    var editButtonTapped = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,25 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         print("view will appear")
         //Call function here to retrieve task list on disk
         RetrieveArchivedTaskList()
+        if(taskList.count <= 0){
+            taskListEditButton.isHidden = true
+        }
         taskListTable.reloadData()
     }
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
+        
+        if(taskList.count <= 0){
+            taskListEditButton.isHidden = true
+        }
         print("View is appearing")
+    }
+    
+    @IBAction func TaskListEditButtonPressed(_ sender: Any) {
+        let tableViewEditingMode = taskListTable.isEditing
+        
+        taskListTable.setEditing(!tableViewEditingMode, animated: true)
     }
     
     @IBSegueAction func AddTasks(_ coder: NSCoder) -> AddTaskController? {
@@ -60,10 +75,9 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
             taskList[selectedIndexPath.row] = task
         } else {
             taskList.append(task)
-            //TODO Call Function here to save to local iPhone Storage
-            ArchiveTaskList(taskList)
-            
         }
+        ArchiveTaskList(taskList)
+        taskListTable.reloadData()
     }
     
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,7 +117,25 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         let taskCell = taskListTable.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         let task = taskList[indexPath.row]
         
+        taskCell.showsReorderControl = true
         taskCell.textLabel?.text = task.taskLabel
         return taskCell
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedTask = taskList.remove(at: sourceIndexPath.row)
+        taskList.insert(movedTask, at: destinationIndexPath.row)
+        
+        ArchiveTaskList(taskList)
+        taskListTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            taskList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            ArchiveTaskList(taskList)
+            taskListTable.reloadData()
+        }
     }
 }

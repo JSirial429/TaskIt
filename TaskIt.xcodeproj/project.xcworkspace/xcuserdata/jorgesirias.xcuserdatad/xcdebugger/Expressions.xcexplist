@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.tableView(_:cellForRowAt:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "taskCell.showsReorderControl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewIsAppearing(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "taskList.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddTaskController.SaveTaskDetail(_:):AddTaskController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "LabelTaskDetail.text">
+            </PersistentString>
+            <PersistentString
+               value = "TextViewTaskDetail.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

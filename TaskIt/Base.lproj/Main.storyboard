@@ -44,28 +44,32 @@
                                     <segue destination="Nx6-oe-dpE" kind="show" destinationCreationSelector="AddTasks:" id="FMU-Qu-CPo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mk0-4L-V9M">
-                                <rect key="frame" x="16" y="130" width="43" height="20.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ou-bL-FrW">
+                                <rect key="frame" x="16.000000000000004" y="122" width="53.333333333333343" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                                <connections>
+                                    <action selector="TaskListEditButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OFe-M3-4mu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XSl-LZ-lDI" secondAttribute="trailing" constant="16" id="3o6-3X-kyP"/>
                             <constraint firstItem="nVd-ja-RTI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7my-q4-PKH"/>
+                            <constraint firstItem="6Ou-bL-FrW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Cks-Oo-NIt"/>
+                            <constraint firstItem="XSl-LZ-lDI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Ou-bL-FrW" secondAttribute="trailing" constant="8" symbolic="YES" id="PeX-iB-a9j"/>
                             <constraint firstItem="nVd-ja-RTI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RyZ-W7-bGT"/>
-                            <constraint firstItem="Mk0-4L-V9M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="27" id="SMu-ys-IvN"/>
-                            <constraint firstItem="Mk0-4L-V9M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WwT-CA-CPc"/>
                             <constraint firstItem="nVd-ja-RTI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dEl-6O-oDy"/>
+                            <constraint firstItem="6Ou-bL-FrW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="eC5-FQ-5wa"/>
                             <constraint firstItem="nVd-ja-RTI" firstAttribute="top" secondItem="XSl-LZ-lDI" secondAttribute="bottom" constant="4" id="gqx-pU-bcs"/>
                             <constraint firstItem="XSl-LZ-lDI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="mWR-cS-BKn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WS0-r9-W7C"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="WS0-r9-W7C"/>
                     <connections>
+                        <outlet property="taskListEditButton" destination="6Ou-bL-FrW" id="hh6-tl-uGy"/>
                         <outlet property="taskListTable" destination="nVd-ja-RTI" id="Pu7-MT-4ed"/>
                     </connections>
                 </viewController>
@@ -104,6 +108,7 @@
                             <constraint firstItem="sIz-mw-JVk" firstAttribute="bottom" secondItem="DxI-gr-hCe" secondAttribute="bottom" constant="20" id="eke-P7-0Ir"/>
                             <constraint firstItem="DxI-gr-hCe" firstAttribute="top" secondItem="rc5-4a-f2S" secondAttribute="bottom" constant="8" symbolic="YES" id="jar-es-y5o"/>
                             <constraint firstItem="rc5-4a-f2S" firstAttribute="leading" secondItem="sIz-mw-JVk" secondAttribute="leading" constant="16" id="rgM-5O-oPK"/>
+                            <constraint firstItem="sIz-mw-JVk" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rc5-4a-f2S" secondAttribute="trailing" symbolic="YES" id="xFV-NU-Ija"/>
                             <constraint firstItem="sIz-mw-JVk" firstAttribute="trailing" secondItem="DxI-gr-hCe" secondAttribute="trailing" constant="16" id="xJl-Fb-qUF"/>
                         </constraints>
                     </view>
