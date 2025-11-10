@@ -19,6 +19,8 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         // Do any additional setup after loading the view.
         taskListTable.delegate = self
         taskListTable.dataSource = self
+        
+        print("View did load")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,19 +28,13 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         print("view will appear")
         //Call function here to retrieve task list on disk
         RetrieveArchivedTaskList()
-        if(taskList.count <= 0){
-            taskListEditButton.isHidden = true
-        }
-        taskListTable.reloadData()
     }
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
-        
-        if(taskList.count <= 0){
-            taskListEditButton.isHidden = true
-        }
         print("View is appearing")
+        taskListTable.reloadData()
+        ShowEditButton()
     }
     
     @IBAction func TaskListEditButtonPressed(_ sender: Any) {
@@ -78,6 +74,7 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         }
         ArchiveTaskList(taskList)
         taskListTable.reloadData()
+        print("Coming back from Add/Edit View")
     }
     
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,12 +127,23 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         taskListTable.reloadData()
     }
     
+    fileprivate func ShowEditButton() {
+        if(taskList.count <= 0){
+            taskListEditButton.isHidden = true
+        }else{
+            taskListEditButton.isHidden = false
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             taskList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             ArchiveTaskList(taskList)
             taskListTable.reloadData()
+            
+            ShowEditButton()
+            print("Deleted task")
         }
     }
 }

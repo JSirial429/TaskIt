@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "AddTaskController.SaveTaskDetail(_:):AddTaskController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "LabelTaskDetail.text">
+            </PersistentString>
+            <PersistentString
+               value = "TextViewTaskDetail.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewController.tableView(_:cellForRowAt:):ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -19,13 +30,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddTaskController.SaveTaskDetail(_:):AddTaskController.swift">
+         contextName = "ViewController.tableView(_:commit:forRowAt:):ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "LabelTaskDetail.text">
-            </PersistentString>
-            <PersistentString
-               value = "TextViewTaskDetail.text">
+               value = "taskList.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
