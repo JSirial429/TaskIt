@@ -111,11 +111,11 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let taskCell = taskListTable.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
+        let taskCell = taskListTable.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskListTableViewCell
         let task = taskList[indexPath.row]
         
+        taskCell.Update(with: task)
         taskCell.showsReorderControl = true
-        taskCell.textLabel?.text = task.taskLabel
         return taskCell
     }
     
@@ -145,5 +145,9 @@ class ViewController: UIViewController,  UITableViewDataSource, UITableViewDeleg
             ShowEditButton()
             print("Deleted task")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
 }

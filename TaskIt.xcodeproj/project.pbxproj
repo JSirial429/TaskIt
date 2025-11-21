@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21698FF82ECEAD990072E80B /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21698FF72ECEAD990072E80B /* TaskListTableViewCell.swift */; };
 		2184696E2C84B306002EBE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184696D2C84B306002EBE92 /* AppDelegate.swift */; };
 		218469702C84B306002EBE92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184696F2C84B306002EBE92 /* SceneDelegate.swift */; };
 		218469722C84B306002EBE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218469712C84B306002EBE92 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21698FF72ECEAD990072E80B /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 		2184696A2C84B306002EBE92 /* TaskIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2184696D2C84B306002EBE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2184696F2C84B306002EBE92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		21F8E24A2E038CA0000FD678 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				21698FF72ECEAD990072E80B /* TaskListTableViewCell.swift */,
 				218469712C84B306002EBE92 /* ViewController.swift */,
 				21F8E24B2E038D28000FD678 /* AddTaskController.swift */,
 			);
@@ -177,6 +180,7 @@
 				2184696E2C84B306002EBE92 /* AppDelegate.swift in Sources */,
 				21F8E2482E037762000FD678 /* TaskCollection.swift in Sources */,
 				218469702C84B306002EBE92 /* SceneDelegate.swift in Sources */,
+				21698FF82ECEAD990072E80B /* TaskListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
